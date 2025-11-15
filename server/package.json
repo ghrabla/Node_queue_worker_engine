@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "bull": "^4.16.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
@@ -13,7 +14,9 @@
     "migrate": "knex migrate:latest --knexfile ./shared/database/knexfile.js",
     "migrate:rollback": "knex migrate:rollback --knexfile ./shared/database/knexfile.js",
     "migrate:make": "knex migrate:make --knexfile ./shared/database/knexfile.js",
-    "migrate:status": "knex migrate:status --knexfile ./shared/database/knexfile.js"
+    "migrate:status": "knex migrate:status --knexfile ./shared/database/knexfile.js",
+    "seed:make": "knex seed:make --knexfile ./shared/database/knexfile.js",
+    "seed:run": "knex seed:run --knexfile ./shared/database/knexfile.js"
   },
   "devDependencies": {
     "knex": "^3.1.0"
