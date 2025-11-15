@@ -1,13 +1,13 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    const Arr = [1,2,3,4,5,6,7,8,9,10];
-
-  res.send(Arr.toString());
+  res.send('Hello, World!');
 });
 
 app.listen(PORT, () => {
