@@ -6,12 +6,18 @@ const LoginController = require('../../app/Controllers/Auth/LoginController');
 const LogoutController = require('../../app/Controllers/Auth/LogoutController');
 const { authenticateToken } = require('../../app/Middlewares/Jwt/authenticateToken');
 
+const RegisterRequest = require('../../app/Requests/Auth/RegisterRequest');
+const LoginRequest = require('../../app/Requests/Auth/LoginRequest');
+
 const registerController = new RegisterController();
 const loginController = new LoginController();
 const logoutController = new LogoutController();
 
-router.post('/register', (req, res) => registerController.register(req, res));
-router.post('/login', (req, res) => loginController.login(req, res));
+const registerRequest = new RegisterRequest();
+const loginRequest = new LoginRequest();
+
+router.post('/register', registerRequest.middleware(),(req, res) => registerController.register(req, res));
+router.post('/login', loginRequest.middleware(), (req, res) => loginController.login(req, res));
 
 router.post('/logout', authenticateToken, (req, res) => logoutController.logout(req, res));
 router.get('/me', authenticateToken, (req, res) => logoutController.me(req, res));

@@ -9,7 +9,6 @@ exports.seed = async function(knex) {
 
   return knex('users').insert([
     {
-      id: 1,
       name: 'John Doe',
       email: 'john@example.com',
       password: hashedPassword1,
@@ -17,7 +16,6 @@ exports.seed = async function(knex) {
       updated_at: knex.fn.now()
     },
     {
-      id: 2,
       name: 'Jane Smith',
       email: 'jane@example.com',
       password: hashedPassword2,
@@ -25,7 +23,6 @@ exports.seed = async function(knex) {
       updated_at: knex.fn.now()
     },
     {
-      id: 3,
       name: 'Admin User',
       email: 'admin@example.com',
       password: hashedPassword3,
