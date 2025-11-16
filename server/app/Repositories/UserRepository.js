@@ -35,7 +35,7 @@ class UserRepository {
 
   async create(userData) {
     try {
-      const [id] = await knex(this.table)
+      const user = await knex(this.table)
         .insert({
           name: userData.name,
           email: userData.email,
@@ -45,7 +45,7 @@ class UserRepository {
         })
         .returning('*');
 
-      return await this.findById(id);
+      return await this.findById(user[0].id);
     } catch (error) {
       throw new Error(`Failed to create user: ${error.message}`);
     }
