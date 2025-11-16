@@ -43,7 +43,7 @@ class UserRepository {
           created_at: knex.fn.now(),
           updated_at: knex.fn.now()
         })
-        .returning('id');
+        .returning('*');
 
       return await this.findById(id);
     } catch (error) {
@@ -60,7 +60,8 @@ class UserRepository {
 
       await knex(this.table)
         .where({ id })
-        .update(updateData);
+        .update(updateData)
+        .returning('*');
 
       return await this.findById(id);
     } catch (error) {
