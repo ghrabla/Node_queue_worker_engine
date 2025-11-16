@@ -10,35 +10,6 @@ class RegisterController {
     try {
       const { name, email, password, confirm_password } = req.body;
 
-      if (!name || !email || !password || !confirm_password) {
-        return res.status(400).json({
-          success: false,
-          message: 'All fields are required'
-        });
-      }
-
-      if (password !== confirm_password) {
-        return res.status(400).json({
-          success: false,
-          message: 'Passwords do not match'
-        });
-      }
-
-      if (password.length < 6) {
-        return res.status(400).json({
-          success: false,
-          message: 'Password must be at least 6 characters long'
-        });
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        return res.status(400).json({
-          success: false,
-          message: 'Please provide a valid email address'
-        });
-      }
-
       const user = await this.userService.createUser({ name, email, password });
 
       const token = jwt.sign(
