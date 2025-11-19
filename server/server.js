@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+require('./shared/Listeners/WelcomEmailListener');
+
 app.use(express.json());
 
 const routes = require('./routes');

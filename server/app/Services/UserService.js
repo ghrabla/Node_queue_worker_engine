@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const UserRepository = require('../Repositories/UserRepository');
 const User = require('../Models/User');
+const eventEmitter = require('../../shared/Events/EventEmitter'); 
 
 class UserService {
   constructor() {
@@ -50,6 +51,12 @@ class UserService {
         name: userData.name,
         email: userData.email,
         password: hashedPassword
+      });
+
+      eventEmitter.emit('UserCreated', { 
+        email: user.email,
+        name: user.name,
+        id: user.id 
       });
 
       return user.toSafeObject();
