@@ -14,6 +14,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "artisan": "node shared/Commands/artisan.js",
     "migrate": "knex migrate:latest --knexfile ./shared/database/knexfile.js",
     "migrate:rollback": "knex migrate:rollback --knexfile ./shared/database/knexfile.js",
     "migrate:make": "knex migrate:make --knexfile ./shared/database/knexfile.js",
